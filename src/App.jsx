@@ -2,6 +2,7 @@ import { useContext, useState, createContext } from "react";
 import Form from "./Form";
 import { nanoid } from "nanoid";
 import Items from "./Items";
+import { toast, ToastContainer } from "react-toastify";
 
 const AppContext = createContext();
 
@@ -30,12 +31,16 @@ const App = () => {
     const newItems = [...items, newItem];
     setItems(newItems);
     setLocalStorage(newItems);
+    toast.success("Item added to the list!");
   };
+
   const removeItem = (itemId) => {
     const newItems = items.filter((item) => item.id !== itemId);
     setItems(newItems);
     setLocalStorage(newItems);
+    toast.success("Item deleted to the list!");
   };
+
   const editItem = (itemId) => {
     const newItems = items.map((item) => {
       if (item.id === itemId) {
@@ -50,6 +55,7 @@ const App = () => {
 
   return (
     <section className="section-center">
+      <ToastContainer position="top-center" />
       <Form addItem={addItem} />
       <AppContext.Provider value={{ editItem, removeItem }}>
         <Items items={items} />

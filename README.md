@@ -26,6 +26,7 @@ Grocery Bud is a simple yet powerful grocery list management application built w
 - localStorage for data persistence
 - CSS custom properties for theming
 - Nanoid for unique ID generation
+- React Toastify to give info to users of their actions
 
 ## Installation
 
